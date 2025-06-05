@@ -2,101 +2,33 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Checkout - ZennxStore</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0; padding: 0;
-      background: linear-gradient(135deg, #007cf0, #00dfd8);
-      color: white;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .container {
-      background: rgba(0,0,0,0.3);
-      padding: 30px;
-      border-radius: 12px;
-      max-width: 400px;
-      width: 100%;
-      box-shadow: 0 0 20px rgba(0,0,0,0.4);
-    }
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    label {
-      font-weight: bold;
-    }
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      margin-top: 5px;
-      margin-bottom: 15px;
-      border-radius: 6px;
-      border: none;
-      font-size: 16px;
-    }
-    button {
-      width: 100%;
-      padding: 12px;
-      background-color: #00dfd8;
-      border: none;
-      border-radius: 6px;
-      font-size: 18px;
-      font-weight: bold;
-      cursor: pointer;
-      color: black;
-    }
-    #successMessage {
-      display: none;
-      text-align: center;
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+  <div class="container">
+    <h1>Checkout</h1>
+    <form action="checkout-sukses.html" method="GET">
+      <label for="nama">Nama Lengkap</label>
+      <input type="text" id="nama" name="nama" required />
 
-<div class="container">
-  <div id="checkoutForm">
-    <h2>Checkout</h2>
-    <form id="form">
-      <label for="nama">Nama</label>
-      <input type="text" id="nama" required />
+      <label for="alamat">Alamat Pengiriman</label>
+      <textarea id="alamat" name="alamat" required></textarea>
 
-      <label for="alamat">Alamat</label>
-      <textarea id="alamat" rows="3" required></textarea>
+      <label for="produk">Produk yang Dibeli</label>
+      <input type="text" id="produk" name="produk" placeholder="Contoh: Kaos Zennx - 2 pcs" required />
+
+      <label for="metode">Metode Pembayaran</label>
+      <select id="metode" name="metode" required>
+        <option value="">Pilih Metode</option>
+        <option value="cod">COD (Bayar di Tempat)</option>
+        <option value="transfer">Transfer Bank</option>
+        <option value="ewallet">E-Wallet (Dana, OVO, dll)</option>
+      </select>
 
       <button type="submit">Kirim Pesanan</button>
     </form>
   </div>
-
-  <div id="successMessage">
-    <h2>✅ Pesanan Berhasil!</h2>
-    <p>Terima kasih sudah belanja di <strong>ZennxStore</strong>!</p>
-    <a href="index.html" style="color: #00dfd8; font-weight: bold;">Kembali ke Beranda</a>
-  </div>
-</div>
-
-<script>
-  const form = document.getElementById('form');
-  const checkoutForm = document.getElementById('checkoutForm');
-  const successMessage = document.getElementById('successMessage');
-
-  form.addEventListener('submit', function(e) {
-    e.preventDefault();
-    const nama = document.getElementById('nama').value.trim();
-    const alamat = document.getElementById('alamat').value.trim();
-
-    if (nama && alamat) {
-      checkoutForm.style.display = 'none';
-      successMessage.style.display = 'block';
-    } else {
-      alert("Harap isi semua kolom.");
-    }
-  });
-</script>
-
 </body>
 </html>
